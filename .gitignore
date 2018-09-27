@@ -30,3 +30,6 @@
 *.exe
 *.out
 *.app
+Practice_cpp/Debug/
+.vs/
+Debug/
