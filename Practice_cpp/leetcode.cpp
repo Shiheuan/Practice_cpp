@@ -30,3 +30,20 @@ int leetcode::removeDuplicates2(vector<int>& nums) {
 	}
 	return index;
 }
+int leetcode::LongestConsecutive(vector<int>& nums) {
+	int longest = 0;
+	/* 初始化方法
+	unordered_set<int> m;
+	for (auto i : nums) m.insert(i);
+	*/
+	unordered_set<int> m(nums.begin(), nums.end());
+	for (auto i : nums) {	
+		if (!m.count(i)) continue;
+		m.erase(i);
+		int prev = i - 1, next = i + 1;
+		while (m.count(next)) m.erase(next++);
+		while (m.count(prev)) m.erase(prev--);
+		longest = max(longest, next - prev - 1);
+	}
+	return longest;
+}

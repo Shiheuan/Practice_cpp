@@ -12,6 +12,7 @@ int main() {
 		cout << b[i] << " ";
 	cout << endl;
 	*/
+	/*
 	int a[] = { 1, 1, 1, 2, 2, 3 };
 	vector<int> b(a, a + 6);
 	int n = l.removeDuplicates2(b);
@@ -19,6 +20,11 @@ int main() {
 	for (int i = 0; i < n; i++)
 		cout << b[i] << " ";
 	cout << endl;
+	*/
+
+	int a[] = { 1 , 100, 300, 2, 3, 500, 5, 4, 130 };
+	vector<int> nums(a, a+9);
+	cout << l.LongestConsecutive(nums) << endl;
 
 	//system("PAUSE");
 	// 将 [链接器] - [系统] - [子系统] 修改为 “控制台”，使用 Ctrl + F5 进行调试即可。
