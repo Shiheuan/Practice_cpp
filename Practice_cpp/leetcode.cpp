@@ -51,7 +51,7 @@ int leetcode::LongestConsecutive(vector<int>& nums) {
 vector<int> leetcode::twoSum(vector<int>& nums, int target) {
 	unordered_map<int, int> m;
 	vector<int> result;
-	for (int i = 0; i < nums.size(); i++) {
+	for (auto i = 0; i < (int)nums.size(); i++) {
 		int num = nums[i];
 		if (m.count(target - num)) {
 			int index = m[target - num];
@@ -61,6 +61,33 @@ vector<int> leetcode::twoSum(vector<int>& nums, int target) {
 		}
 		else
 			m[num] = i;
+	}
+	return result;
+}
+
+vector<vector<int>> leetcode::threeSum(vector<int>& nums) {
+	vector<vector<int>> result;
+	sort(nums.begin(), nums.end());
+	int& b = nums.back();
+	if (nums.empty() || (b < 0)) return result;
+	for (auto i = 0; i < (int)nums.size(); i++) {
+		if (nums[i] > 0) break;
+		if (i > 0 && nums[i] == nums[i - 1]) continue;
+		int target = 0 - nums[i];
+		int j = i + 1, k = nums.size() - 1;
+		while (j < k) {
+			if (target == nums[j] + nums[k]) {
+				result.push_back({ nums[i], nums[j], nums[k] });
+				while (i < j && nums[j] == nums[j + 1]) j++;
+				while (i < j && nums[k] == nums[k - 1]) k--;
+				j++;
+				k--;
+			}
+			else if (target < nums[j] + nums[k])
+				k--;
+			else
+				j++;
+		}
 	}
 	return result;
 }

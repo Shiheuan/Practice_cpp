@@ -44,4 +44,16 @@ public:
 	 * return [0, 1].
 	 */
 	vector<int> twoSum(vector<int>& nums, int target);
+	/******
+	 * #15
+	 * Given an array nums of n integers, are there elements a, b, c in nums such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero.
+	 * Notes: The solution set must not contain duplicate triplets.
+	 * Given array nums = [-1, 0, 1, 2, -1, -4],
+	 * A solution set is:
+	 * [
+	 *	 [-1, 0, 1],
+	 *   [-1, -1, 2]
+	 * ]
+	 */
+	vector<vector<int>> threeSum(vector<int>& nums);
 };
