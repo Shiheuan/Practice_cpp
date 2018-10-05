@@ -22,9 +22,16 @@ int main() {
 	cout << endl;
 	*/
 
+	/*
 	int a[] = { 1 , 100, 300, 2, 3, 500, 5, 4, 130 };
 	vector<int> nums(a, a+9);
 	cout << l.LongestConsecutive(nums) << endl;
+	*/
+
+	int a[] = { 2, 7, 11, 15 };
+	vector<int> nums(a, a + 4);
+	vector<int> re = l.twoSum(nums, 9);
+	cout << re[0] << " " << re[1] << endl;
 
 	//system("PAUSE");
 	// 将 [链接器] - [系统] - [子系统] 修改为 “控制台”，使用 Ctrl + F5 进行调试即可。

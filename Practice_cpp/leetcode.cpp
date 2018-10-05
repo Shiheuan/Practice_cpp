@@ -47,3 +47,20 @@ int leetcode::LongestConsecutive(vector<int>& nums) {
 	}
 	return longest;
 }
+
+vector<int> leetcode::twoSum(vector<int>& nums, int target) {
+	unordered_map<int, int> m;
+	vector<int> result;
+	for (int i = 0; i < nums.size(); i++) {
+		int num = nums[i];
+		if (m.count(target - num)) {
+			int index = m[target - num];
+			result.push_back(index < i ? index : i);
+			result.push_back(index < i ? i : index);
+			break;
+		}
+		else
+			m[num] = i;
+	}
+	return result;
+}
