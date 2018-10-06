@@ -125,3 +125,31 @@ int leetcode::threeSumClosest(vector<int>& nums, int target) {
 	}
 	return result;
 }
+
+vector<vector<int>> leetcode::fourSum(vector<int>& nums, int target) {
+	vector<vector<int>> result;
+	sort(nums.begin(), nums.end());
+	if (nums.size() < 4) return result;
+	for (int i = 0; i < (int)nums.size() - 3; i++) {
+		if (i > 0 && nums[i] == nums[i - 1]) continue;
+		for (int j = i + 1; j < (int)nums.size() - 2; j++) {
+			if (j > i + 1 && nums[j] == nums[j - 1]) continue;
+			int k = j + 1, l = nums.size() - 1;
+			while (k < l) {
+				const int sum = nums[i] + nums[j] + nums[k] + nums[l];
+				if (target == sum) {
+					result.push_back({ nums[i], nums[j], nums[k], nums[l] });
+					while (k < l && nums[k] == nums[k + 1]) k++;
+					while (k < l && nums[l] == nums[l - 1]) l--;
+					k++;
+					l--;
+				}
+				else if (sum > target)
+					l--;
+				else
+					k++;
+			}
+		}
+	}
+	return result;
+}
