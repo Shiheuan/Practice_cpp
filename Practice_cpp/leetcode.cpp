@@ -68,12 +68,12 @@ vector<int> leetcode::twoSum(vector<int>& nums, int target) {
 vector<vector<int>> leetcode::threeSum(vector<int>& nums) {
 	vector<vector<int>> result;
 	sort(nums.begin(), nums.end());
-	// ï¿½ï¿½Ö¦ï¿½ï¿½
-	// ï¿½ï¿½ ï¿½ï¿½ È«ï¿½ï¿½Ð¡ï¿½ï¿½0
+	// ¼ôÖ¦£º
+	// ¿Õ »ò È«²¿Ð¡ÓÚ0
 	if (nums.empty() || (nums.back() < 0)) return result;
-	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ôªï¿½Ø´ï¿½ï¿½ï¿½Ö¹
+	// ÔÚ×îºóÈý¸öÔªËØ´¦ÖÕÖ¹
 	for (auto i = 0; i < (int)nums.size() - 2; i++) {
-		// ï¿½ï¿½Ð¡ï¿½ï¿½0ï¿½ï¿½Ôªï¿½Ø¿ï¿½Ê¼ï¿½ï¿½Ñ­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½0ï¿½ï¿½Ôªï¿½ï¿½ï¿½ï¿½Ö¹
+		// ´ÓÐ¡ÓÚ0µÄÔªËØ¿ªÊ¼£¬Ñ­»·µ½´óÓÚ0µÄÔªËØÖÕÖ¹
 		if (nums[i] > 0) break;
 		if (i > 0 && nums[i] == nums[i - 1]) continue;
 		int target = 0 - nums[i];
@@ -81,13 +81,43 @@ vector<vector<int>> leetcode::threeSum(vector<int>& nums) {
 		while (j < k) {
 			if (target == nums[j] + nums[k]) {
 				result.push_back({ nums[i], nums[j], nums[k] });
-				// ï¿½Æ³ï¿½ï¿½Ø¸ï¿½Ôªï¿½ï¿½
-				while (i < j && nums[j] == nums[j + 1]) j++;
-				while (i < j && nums[k] == nums[k - 1]) k--;
+				// ÒÆ³ýÖØ¸´ÔªËØ
+				while (j < k && nums[j] == nums[j + 1]) j++;
+				while (j < k && nums[k] == nums[k - 1]) k--;
 				j++;
 				k--;
 			}
 			else if (target < nums[j] + nums[k])
+				k--;
+			else
+				j++;
+		}
+	}
+	return result;
+}
+
+int leetcode::threeSumClosest(vector<int>& nums, int target) {
+	int result = 0;
+	int min_gap = INT_MAX;
+	if (nums.size() <= 3) {
+		for (int i = 0; i < (int)nums.size(); i++)
+			result += nums[i];
+		return result;
+	}
+	sort(nums.begin(), nums.end());
+	for (int i = 0; i < (int)nums.size() - 2; i++) {
+		int j = i + 1, k = nums.size() - 1;
+		while (j < k) {
+			const int sum = nums[i] + nums[j] + nums[k];
+			const int gap = abs(target - sum);
+			if (gap < min_gap) {
+				result = sum;
+				min_gap = gap;
+				// ²»ÄÜÒÆ³ýÖØ¸´£¬ÓëÉÏÌâ²»Í¬£¬´ËÌâÖ»ÓÐ×îÓÅ½â£¬Ã»ÓÐÖØ¸´½â£¬ÒÆ³ýÖØ¸´Êý¾ÝÔò²»ÄÜ¸²¸ÇËùÓÐÇé¿ö
+				/*while (j < k && nums[j] == nums[j + 1]) j++;
+				while (j < k && nums[k] == nums[k - 1]) k--;*/
+			}
+			if (sum > target)
 				k--;
 			else
 				j++;
