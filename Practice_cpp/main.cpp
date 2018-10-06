@@ -44,20 +44,23 @@ int main() {
 	}
 	*/
 
-	/*
+	/**/
 	//int a[] = { -1, 2, 1, -4 };
 	int a[] = { 0, 2, 1, -3 };
 
 	vector<int> nums(a, a + 4);
-	int re = l.threeSumClosest(nums, 1);
+	int re = l.threeSumClosest(nums, 1, 2);
 	cout << re << endl;
-	*/
+	/**/
+
+	/*
 	int a[] = { 1, 0, -1, 0, -2, 2 };
 	vector<int> nums(a, a+6);
 	vector<vector<int>> re = l.fourSum(nums, 0);
 	for (int i = 0; i < (int)re.size(); i++) {
 		cout << re[i][0] << " " << re[i][1] << " " << re[i][2] << " " << re[i][3] << endl;
 	}
+	*/
 
 	//system("PAUSE");
 	// 将 [链接器] - [系统] - [子系统] 修改为 “控制台”，使用 Ctrl + F5 进行调试即可。

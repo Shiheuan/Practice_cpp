@@ -64,7 +64,7 @@ public:
 	 * Given array nums = [-1, 2, 1, -4], and target = 1.
 	 * The sum that is closest to the target is 2. (-1 + 2 + 1 = 2).
 	 */
-	int threeSumClosest(vector<int>& nums, int target);
+	int threeSumClosest(vector<int>& nums, int target, int method);
 	/******
 	 * #18
 	 * Given an array nums of n integers and an integer target, are there elements a, b, c, and d in nums such that a + b + c + d = target? 

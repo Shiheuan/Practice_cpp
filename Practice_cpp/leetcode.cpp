@@ -96,7 +96,7 @@ vector<vector<int>> leetcode::threeSum(vector<int>& nums) {
 	return result;
 }
 
-int leetcode::threeSumClosest(vector<int>& nums, int target) {
+int leetcode::threeSumClosest(vector<int>& nums, int target, int method) {
 	int result = 0;
 	int min_gap = INT_MAX;
 	if (nums.size() <= 3) {
@@ -105,24 +105,44 @@ int leetcode::threeSumClosest(vector<int>& nums, int target) {
 		return result;
 	}
 	sort(nums.begin(), nums.end());
-	for (int i = 0; i < (int)nums.size() - 2; i++) {
-		int j = i + 1, k = nums.size() - 1;
-		while (j < k) {
-			const int sum = nums[i] + nums[j] + nums[k];
-			const int gap = abs(target - sum);
-			if (gap < min_gap) {
-				result = sum;
-				min_gap = gap;
-				// 不能移除重复，与上题不同，此题只有最优解，没有重复解，移除重复数据则不能覆盖所有情况
-				/*while (j < k && nums[j] == nums[j + 1]) j++;
-				while (j < k && nums[k] == nums[k - 1]) k--;*/
+	if (method == 1)
+	// method 1 使用index
+		for (int i = 0; i < (int)nums.size() - 2; i++) {
+			int j = i + 1, k = nums.size() - 1;
+			while (j < k) {
+				const int sum = nums[i] + nums[j] + nums[k];
+				const int gap = abs(target - sum);
+				if (gap < min_gap) {
+					result = sum;
+					min_gap = gap;
+					// 不能移除重复，与上题不同，此题只有最优解，没有重复解，移除重复数据则不能覆盖所有情况
+					/*while (j < k && nums[j] == nums[j + 1]) j++;
+					while (j < k && nums[k] == nums[k - 1]) k--;*/
+				}
+				if (sum > target)
+					k--;
+				else
+					j++;
 			}
-			if (sum > target)
-				k--;
-			else
-				j++;
 		}
-	}
+	else if (method == 2)
+	// method 2 使用指针 迭代器
+		for (auto a = nums.begin(); a != prev(nums.end(), 2); a++) {
+			auto b = next(a);
+			// auto b = a + 1;
+			auto c = prev(nums.end());
+
+			while (b < c) {
+				const int sum = *a + *b + *c;
+				const int gap = abs(target - sum);
+				if (gap < min_gap) {
+					result = sum;
+					min_gap = gap;
+				}
+				if (sum < target) ++b;
+				else --c;
+			}
+		}
 	return result;
 }
 
