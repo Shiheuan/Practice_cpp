@@ -68,9 +68,12 @@ vector<int> leetcode::twoSum(vector<int>& nums, int target) {
 vector<vector<int>> leetcode::threeSum(vector<int>& nums) {
 	vector<vector<int>> result;
 	sort(nums.begin(), nums.end());
-	int& b = nums.back();
-	if (nums.empty() || (b < 0)) return result;
-	for (auto i = 0; i < (int)nums.size(); i++) {
+	// ��֦��
+	// �� �� ȫ��С��0
+	if (nums.empty() || (nums.back() < 0)) return result;
+	// ���������Ԫ�ش���ֹ
+	for (auto i = 0; i < (int)nums.size() - 2; i++) {
+		// ��С��0��Ԫ�ؿ�ʼ��ѭ��������0��Ԫ����ֹ
 		if (nums[i] > 0) break;
 		if (i > 0 && nums[i] == nums[i - 1]) continue;
 		int target = 0 - nums[i];
@@ -78,6 +81,7 @@ vector<vector<int>> leetcode::threeSum(vector<int>& nums) {
 		while (j < k) {
 			if (target == nums[j] + nums[k]) {
 				result.push_back({ nums[i], nums[j], nums[k] });
+				// �Ƴ��ظ�Ԫ��
 				while (i < j && nums[j] == nums[j + 1]) j++;
 				while (i < j && nums[k] == nums[k - 1]) k--;
 				j++;
