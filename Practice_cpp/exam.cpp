@@ -95,6 +95,7 @@ void exam::bettle() {
 	vector<int> line;
 	vector<int> s;
 	int h = 0;
+	int max = 0;
 	for (int i = 0; i < M; i++) {
 		line.clear();
 		s.clear();
@@ -116,10 +117,16 @@ void exam::bettle() {
 	}
 	for (int i = 0; i < M; i++) {
 		for (int j = 0; j < N; j++) {
-			
+			dfs(i, j);
 		}
 	}
-	/**/
+	for (int i = 0; i < M; i++) {
+		for (int j = 0; j < N; j++) {
+			max = (max < S[i][j]) ? S[i][j] : max;
+		}
+	}
+	cout << max << endl;
+	/*
 	for (int i = 0; i < M; i++) {
 		for (int j = 0; j < N; j++) {
 			cout << S[i][j] << " ";
@@ -134,17 +141,39 @@ bool exam::is_sea(int x, int y) {
 	else {
 		if (x > 0 && is_sea(x - 1, y)) return true;
 		if (y > 0 && is_sea(x, y - 1)) return true;
-		if (x < M && is_sea(x + 1, y)) return true;
-		if (y < N && is_sea(x , y + 1)) return true;
+		if (x < M-1 && is_sea(x + 1, y)) return true;
+		if (y < N-1 && is_sea(x , y + 1)) return true;
 	}
 	return false;
 }
 
 int exam::dfs(int x, int y) {
-	if (S[x][y] != 0) return S[x][y];
-	int up, down, left, right;
-	if ()
-	return 0;
+	if (S[x][y] == 0) {
+		int temp;
+		int max = 0;
+		if (x > 0 && MAP[x-1][y] < MAP[x][y]) {
+			temp = dfs(x - 1, y);
+			max = (max < temp) ? temp : max;
+		}
+		if (y > 0 && MAP[x][y-1] < MAP[x][y]) {
+			temp = dfs(x, y - 1);
+			max = (max < temp) ? temp : max;
+		}
+		if (x < M-1 && MAP[x+1][y] < MAP[x][y]) {
+			temp = dfs(x + 1, y);
+			max = (max < temp) ? temp : max;
+		}
+		if (y < N-1 && MAP[x][y+1] < MAP[x][y]) {
+			temp = dfs(x, y + 1);
+			max = (max < temp) ? temp : max;
+		}
+		S[x][y] = max+1;
+		return S[x][y];
+	}
+	else if (S[x][y] == -1)
+		return 0;
+	else
+		return S[x][y];
 }
 
 void exam::tuofeng() {
@@ -170,4 +199,37 @@ void exam::min_int() {
 		if (m.count(i))
 			cout << m[i];
 	cout << endl;
+}
+
+void exam::ski() {
+	while (cin >> M >> N) {
+		MAP.clear();
+		S.clear();
+		vector<int> line;
+		vector<int> s;
+		int h = 0;
+		int max = 0;
+		for (int i = 0; i < M; i++) {
+			line.clear();
+			s.clear();
+			for (int j = 0; j < N; j++) {
+				cin >> h;
+				line.push_back(h);
+				s.push_back(0);
+			}
+			MAP.push_back(line);
+			S.push_back(s);
+		}
+		for (int i = 0; i < M; i++) {
+			for (int j = 0; j < N; j++) {
+				dfs(i, j);
+			}
+		}
+		for (int i = 0; i < M; i++) {
+			for (int j = 0; j < N; j++) {
+				max = (max < S[i][j]) ? S[i][j] : max;
+			}
+		}
+		cout << max << endl;
+	}
 }

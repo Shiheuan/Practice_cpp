@@ -89,12 +89,14 @@ int main() {
 
 	/**/
 
-	/*
-	e.bettle();
+	/**/
+	// e.bettle();
+	e.ski();
 	/**/
 
 	//e.tuofeng();
-	e.min_int();
+	//e.min_int();
+
 	//system("PAUSE");
 	// 将 [链接器] - [系统] - [子系统] 修改为 “控制台”，使用 Ctrl + F5 进行调试即可。
 	return 0;
