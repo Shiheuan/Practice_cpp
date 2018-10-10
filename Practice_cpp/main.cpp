@@ -1,5 +1,6 @@
 #include "leetcode.h"
 #include "exam.h"
+
 int main() {
 	leetcode l;
 	exam e;
@@ -67,10 +68,33 @@ int main() {
 	/*
 	e.huawei_test_add();
 	/**/
-
+	/*
 	int a[] = { 3, 0, 1, 2 };
 	e.huawei_test_sort(a, 4);
 	cout << a[0] << " " << a[1] << " " << a[2] << " " << a[3] << " ";
+	/**/
+
+	/*
+	e.reverse();
+	/**/
+	/*
+	string a;
+	cin >> a;
+	cout << stoi(a);
+	/**/
+
+	/*
+	// -7X^4+5X^6-3X^3+3X^3+1X^0
+	e.decode();
+
+	/**/
+
+	/*
+	e.bettle();
+	/**/
+
+	//e.tuofeng();
+	e.min_int();
 	//system("PAUSE");
 	// 将 [链接器] - [系统] - [子系统] 修改为 “控制台”，使用 Ctrl + F5 进行调试即可。
 	return 0;
