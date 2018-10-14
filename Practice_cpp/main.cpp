@@ -91,12 +91,21 @@ int main() {
 
 	/**/
 	// e.bettle();
-	e.ski();
+	// e.ski();
 	/**/
 
 	//e.tuofeng();
 	//e.min_int();
 
+	/**/
+	int a[] = { 3,2,2,3 };
+	vector<int> n(a, a+4);
+	int b = l.removeElement(n, 3);
+	cout << b << endl;
+	for (int i = 0; i < b; i++)
+		cout << n[i];
+	cout << endl;
+	/**/
 	//system("PAUSE");
 	// 将 [链接器] - [系统] - [子系统] 修改为 “控制台”，使用 Ctrl + F5 进行调试即可。
 	return 0;

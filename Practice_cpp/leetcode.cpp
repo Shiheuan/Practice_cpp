@@ -173,3 +173,13 @@ vector<vector<int>> leetcode::fourSum(vector<int>& nums, int target) {
 	}
 	return result;
 }
+
+int leetcode::removeElement(vector<int>& nums, int val) {
+	//int ans = 0;
+	//for (int i = 0; i < nums.size(); i++) {
+	//	
+	//	if (nums[i] != val) nums[ans++] = nums[i];;
+	//}
+	//return ans;
+	return distance(nums.begin(), remove(nums.begin(), nums.end(), val));
+}
