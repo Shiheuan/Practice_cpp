@@ -126,7 +126,7 @@ void exam::bettle() {
 		}
 	}
 	cout << max << endl;
-	/*
+	/**/
 	for (int i = 0; i < M; i++) {
 		for (int j = 0; j < N; j++) {
 			cout << S[i][j] << " ";
