@@ -85,4 +85,9 @@ public:
 	 * [3, 2, 2, 3], 3  -> 2, [2, 2]
 	 */
 	int removeElement(vector<int>& nums, int val);
+	/* #283
+	 * Given an array nums, write a function to move all 0's to the end of it while maintaining the relative order of the non-zero elements.
+	 * [0, 1, 0, 3, 12] -> [1, 3, 12, 0, 0]
+	 */
+	void moveZeroes(vector<int>& nums);
 };

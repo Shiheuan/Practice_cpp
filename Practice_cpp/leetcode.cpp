@@ -176,10 +176,20 @@ vector<vector<int>> leetcode::fourSum(vector<int>& nums, int target) {
 
 int leetcode::removeElement(vector<int>& nums, int val) {
 	//int ans = 0;
-	//for (int i = 0; i < nums.size(); i++) {
+	//for (int i = 0; i < (int)nums.size(); i++) {
 	//	
 	//	if (nums[i] != val) nums[ans++] = nums[i];;
 	//}
 	//return ans;
 	return distance(nums.begin(), remove(nums.begin(), nums.end(), val));
+}
+
+void leetcode::moveZeroes(vector<int>& nums) {
+	int ans = 0;
+	for (int i = 0; i < (int)nums.size(); i++) {
+		if (nums[i] != 0) nums[ans++] = nums[i];
+	}
+	for (int j = ans; j < (int)nums.size(); j++) {
+		nums[j] = 0;
+	}
 }
