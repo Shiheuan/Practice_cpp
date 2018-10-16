@@ -193,3 +193,38 @@ void leetcode::moveZeroes(vector<int>& nums) {
 		nums[j] = 0;
 	}
 }
+int leetcode::longestValidParentheses(string s) {
+	/*stack<int> S;
+	int ans = 0, start = 0;
+	for (int i = 0; i < (int)s.size(); i++) {
+		if (s[i] == ')') {
+			if (S.empty()) start = i + 1;
+			else {
+				S.pop();
+				ans = S.empty() ? max(ans, i - start + 1) : max(ans, i - S.top());
+			}
+		}
+		else if (s[i] == '(')
+			S.push(i);
+	}
+	return ans;*/
+	// DP
+	// DP[i]：以s[i-1]为结尾的longest valid parentheses substring的长度
+	int n = s.size();
+	if (n < 2)
+		return 0;
+	int ans = 0;
+	vector<int> dp(n + 1, 0);
+	for (int i = 1; i < n + 1; i++)
+	{
+		int j = i - 2 - dp[i - 1];
+		if (s[i - 1] == '(' || j < 0 || s[j] == ')')
+			dp[i] = 0;
+		else
+		{
+			dp[i] = dp[i - 1] + 2 + dp[j];
+			ans = max(ans, dp[i]);
+		}
+	}
+	return ans;
+}

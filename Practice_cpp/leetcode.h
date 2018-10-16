@@ -5,6 +5,7 @@
 #include <unordered_map>
 #include <algorithm>
 #include <cmath>
+#include <stack>
 
 using namespace std;
 
@@ -90,4 +91,9 @@ public:
 	 * [0, 1, 0, 3, 12] -> [1, 3, 12, 0, 0]
 	 */
 	void moveZeroes(vector<int>& nums);
+	/* #32
+	 * Given a string containing just the characters '(' and ')', find the length of the longest valid (well-formed) parentheses substring.
+	 * "(()" -> 2  ")()())" -> 4
+	 */
+	int longestValidParentheses(string s);
 };
