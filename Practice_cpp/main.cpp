@@ -122,7 +122,7 @@ int main() {
 	cout << a << endl;
 	/**/
 
-	/**/
+	/*
 	int a[] = { 1, 2, 3 };
 	// {5,1,1} {1,5,1}
 	vector<int> nums(a, a + 3);
@@ -132,6 +132,9 @@ int main() {
 	cout << endl;
 	/**/
 
+	/**/
+	cout << l.getPermutation(4, 9) << endl;
+	/**/
 
 	//system("PAUSE");
 	// 将 [链接器] - [系统] - [子系统] 修改为 “控制台”，使用 Ctrl + F5 进行调试即可。

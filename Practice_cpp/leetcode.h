@@ -6,6 +6,7 @@
 #include <algorithm>
 #include <cmath>
 #include <stack>
+#include <string>
 
 using namespace std;
 
@@ -100,4 +101,11 @@ public:
 	 * Implement next permutation, which rearranges numbers into the lexicographically next greater permutation of numbers.
 	 */
 	void nextPermutation(vector<int>& nums);
+	/* #60
+	 * The set [1,2,3,...,n] contains a total of n! unique permutations.
+	 * By listing and labeling all of the permutations in order, we get the following sequence for n = 3:
+	 * 1."123" 2."132" 3."213" ...
+	 * Given n and k, return the kth permutation sequence.
+	 */
+	string getPermutation(int n, int k);
 };

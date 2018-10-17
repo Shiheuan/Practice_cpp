@@ -242,3 +242,22 @@ void leetcode::nextPermutation(vector<int>& nums) {
 	reverse(nums.begin() + p + 1, nums.end());
 	return;
 }
+
+string leetcode::getPermutation(int n, int k) {
+	const int fact[] = { 1, 1, 2, 6, 24, 120, 720, 5040, 40320, 362880 };
+	string ans = "";
+	vector<int> nums;
+	for (int i = 1; i < n + 1; i++) {
+		nums.push_back(i);
+	}
+	int a = 0;
+	int m = n;
+	k = k - 1;
+	for (int i = 1; i < n + 1; i++) {
+		a = k / fact[n - i];
+		k = k % fact[n - i];
+		ans.append(to_string(nums[a]));
+		nums.erase(nums.begin() + a);
+	}
+	return ans;
+}
