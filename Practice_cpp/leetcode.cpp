@@ -228,3 +228,17 @@ int leetcode::longestValidParentheses(string s) {
 	}
 	return ans;
 }
+void leetcode::nextPermutation(vector<int>& nums) {
+	int p = nums.size() - 2;
+	int c = nums.size() - 1;
+	while (p > -1 && nums[p] >= nums[p + 1]) p--;
+
+	if (p == -1) {
+		reverse(nums.begin(), nums.end());
+		return;
+	}
+	while (c > 1 && nums[c] <= nums[p]) c--;
+	swap(nums[p], nums[c]);
+	reverse(nums.begin() + p + 1, nums.end());
+	return;
+}

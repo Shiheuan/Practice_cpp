@@ -96,4 +96,8 @@ public:
 	 * "(()" -> 2  ")()())" -> 4
 	 */
 	int longestValidParentheses(string s);
+	/* #31
+	 * Implement next permutation, which rearranges numbers into the lexicographically next greater permutation of numbers.
+	 */
+	void nextPermutation(vector<int>& nums);
 };
