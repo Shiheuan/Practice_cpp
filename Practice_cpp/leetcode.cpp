@@ -261,3 +261,26 @@ string leetcode::getPermutation(int n, int k) {
 	}
 	return ans;
 }
+
+vector<vector<int>> leetcode::permute(vector<int>& nums) {
+	vector<vector<int>> ans;
+	vector<int> line;
+	vector<bool> checked(nums.size(), false);
+	PermuteDfs(line, nums, checked, ans);
+	return ans;
+}
+void leetcode::PermuteDfs(vector<int>& line, vector<int>& nums, vector<bool>& checked, vector<vector<int>>& ans) {
+	if (line.size() == nums.size()) {
+		ans.push_back(line);
+		return;
+	}
+	for (int i = 0; i < (int)nums.size(); i++) {
+		if (checked[i] == false) {
+			checked[i] = true;
+			line.push_back(nums[i]);
+			PermuteDfs(line, nums, checked, ans);
+			checked[i] = false;
+			line.pop_back();
+		}
+	}
+}

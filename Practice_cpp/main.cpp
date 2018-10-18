@@ -132,8 +132,20 @@ int main() {
 	cout << endl;
 	/**/
 
-	/**/
+	/*
 	cout << l.getPermutation(4, 9) << endl;
+	/**/
+
+	/**/
+	int a[] = { 1, 2, 3 };
+	vector<int> nums(a, a + 3);
+	vector<vector<int>> p = l.permute(nums);
+	for (int i = 0; i < (int)p.size(); i++) {
+		for (int j = 0; j < (int)p[i].size(); j++) {
+			cout << p[i][j] << " ";
+		}
+		cout << endl;
+	}
 	/**/
 
 	//system("PAUSE");

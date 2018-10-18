@@ -108,4 +108,19 @@ public:
 	 * Given n and k, return the kth permutation sequence.
 	 */
 	string getPermutation(int n, int k);
+	/* #47
+	 * Given a collection of distinct integers, return all possible permutations.
+	 * Input: [1,2,3]
+	 * Output:
+	 * [[1,2,3],
+	 *	[1,3,2],
+	 *	[2,1,3],
+	 *	[2,3,1],
+	 *	[3,1,2],
+	 *	[3,2,1]]
+	 */
+	vector<vector<int>> permute(vector<int>& nums);
+private:
+	void PermuteDfs(vector<int>& line, vector<int>& nums, vector<bool>& checked, vector<vector<int>>& ans);
+public:
 };
