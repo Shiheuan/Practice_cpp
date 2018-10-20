@@ -1,7 +1,10 @@
 #include "leetcode.h"
 #include "exam.h"
+#include <gtest/gtest.h>
+#include <tchar.h>
 
-int main() {
+int main(int argc, _TCHAR* argv[]) {
+	testing::InitGoogleTest(&argc, argv);
 	leetcode l;
 	exam e;
 	// vector<int> a = new vector<int>(3);
@@ -119,8 +122,16 @@ int main() {
 	string s = ")(()(()(((())(((((()()))((((()()(()()())())())()))()()()())(())()()(((()))))()((()))(((())()((()()())((())))(())))())((()())()()((()((())))))((()(((((()((()))(()()(())))((()))()))())";
 	int a = l.longestValidParentheses(s);
 	cout << a << endl;
-
+	
+	return RUN_ALL_TESTS();
 	//system("PAUSE");
 	// 将 [链接器] - [系统] - [子系统] 修改为 “控制台”，使用 Ctrl + F5 进行调试即可。
-	return 0;
+	// return 0;
+}
+
+TEST(FooTest, HandleNoneZeroInput)
+{
+	leetcode l;
+	EXPECT_EQ(2, l.Foo(4, 10));
+	EXPECT_EQ(6, l.Foo(30, 18));
 }

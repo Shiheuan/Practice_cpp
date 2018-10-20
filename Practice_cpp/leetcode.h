@@ -6,6 +6,7 @@
 #include <algorithm>
 #include <cmath>
 #include <stack>
+#include <gtest/gtest.h>
 
 using namespace std;
 
@@ -96,4 +97,8 @@ public:
 	 * "(()" -> 2  ")()())" -> 4
 	 */
 	int longestValidParentheses(string s);
+	// test googletest
+	int Foo(int a, int b);
+	
 };
+
