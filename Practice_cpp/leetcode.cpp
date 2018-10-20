@@ -240,3 +240,60 @@ int leetcode::Foo(int a, int b)
 		return b;
 	return Foo(b, c);
 }
+
+void leetcode::nextPermutation(vector<int>& nums) {
+	int p = nums.size() - 2;
+	int c = nums.size() - 1;
+	while (p > -1 && nums[p] >= nums[p + 1]) p--;
+
+	if (p == -1) {
+		reverse(nums.begin(), nums.end());
+		return;
+	}
+	while (c > 1 && nums[c] <= nums[p]) c--;
+	swap(nums[p], nums[c]);
+	reverse(nums.begin() + p + 1, nums.end());
+	return;
+}
+
+string leetcode::getPermutation(int n, int k) {
+	const int fact[] = { 1, 1, 2, 6, 24, 120, 720, 5040, 40320, 362880 };
+	string ans = "";
+	vector<int> nums;
+	for (int i = 1; i < n + 1; i++) {
+		nums.push_back(i);
+	}
+	int a = 0;
+	int m = n;
+	k = k - 1;
+	for (int i = 1; i < n + 1; i++) {
+		a = k / fact[n - i];
+		k = k % fact[n - i];
+		ans.append(to_string(nums[a]));
+		nums.erase(nums.begin() + a);
+	}
+	return ans;
+}
+
+vector<vector<int>> leetcode::permute(vector<int>& nums) {
+	vector<vector<int>> ans;
+	vector<int> line;
+	vector<bool> checked(nums.size(), false);
+	PermuteDfs(line, nums, checked, ans);
+	return ans;
+}
+void leetcode::PermuteDfs(vector<int>& line, vector<int>& nums, vector<bool>& checked, vector<vector<int>>& ans) {
+	if (line.size() == nums.size()) {
+		ans.push_back(line);
+		return;
+	}
+	for (int i = 0; i < (int)nums.size(); i++) {
+		if (checked[i] == false) {
+			checked[i] = true;
+			line.push_back(nums[i]);
+			PermuteDfs(line, nums, checked, ans);
+			checked[i] = false;
+			line.pop_back();
+		}
+	}
+}

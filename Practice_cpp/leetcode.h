@@ -7,6 +7,7 @@
 #include <cmath>
 #include <stack>
 #include <gtest/gtest.h>
+#include <string>
 
 using namespace std;
 
@@ -99,6 +100,30 @@ public:
 	int longestValidParentheses(string s);
 	// test googletest
 	int Foo(int a, int b);
-	
+	/* #31
+	 * Implement next permutation, which rearranges numbers into the lexicographically next greater permutation of numbers.
+	 */
+	void nextPermutation(vector<int>& nums);
+	/* #60
+	 * The set [1,2,3,...,n] contains a total of n! unique permutations.
+	 * By listing and labeling all of the permutations in order, we get the following sequence for n = 3:
+	 * 1."123" 2."132" 3."213" ...
+	 * Given n and k, return the kth permutation sequence.
+	 */
+	string getPermutation(int n, int k);
+	/* #47
+	 * Given a collection of distinct integers, return all possible permutations.
+	 * Input: [1,2,3]
+	 * Output:
+	 * [[1,2,3],
+	 *	[1,3,2],
+	 *	[2,1,3],
+	 *	[2,3,1],
+	 *	[3,1,2],
+	 *	[3,2,1]]
+	 */
+	vector<vector<int>> permute(vector<int>& nums);
+private:
+	void PermuteDfs(vector<int>& line, vector<int>& nums, vector<bool>& checked, vector<vector<int>>& ans);
+public:
 };
-
