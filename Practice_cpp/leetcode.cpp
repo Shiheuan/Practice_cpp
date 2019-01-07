@@ -297,3 +297,19 @@ void leetcode::PermuteDfs(vector<int>& line, vector<int>& nums, vector<bool>& ch
 		}
 	}
 }
+string leetcode::convert(string s, int numRows) {
+	if (s.length() == 0 || numRows <= 0) return "";
+	if (numRows < 2) return s;
+	string result;
+	int size = 2 * numRows - 2;
+	for (int i = 0; i < numRows; i++)
+	{
+		for (int j = i; j < s.length(); j+=size) {
+			result += s[j];
+			if (i != 0 && i != numRows - 1 && (j - i) + (size - i) < s.length()) {
+				result += s[(j - i) + (size - i)];
+			}
+		}
+	}
+	return result;
+}

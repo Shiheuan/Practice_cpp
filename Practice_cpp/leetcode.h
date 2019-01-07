@@ -123,6 +123,16 @@ public:
 	 *	[3,2,1]]
 	 */
 	vector<vector<int>> permute(vector<int>& nums);
+	/* #6
+	 * The string is written in a zigzag pattern on a given number of rows like this:
+	 * string: PAYPALISHIRING, rows: 4
+	 * P     I     N
+	 * A   L S   I G
+	 * Y A   H R
+	 * P     I
+	 * and then read line by line.
+	 */
+	string convert(string s, int numRows);
 private:
 	void PermuteDfs(vector<int>& line, vector<int>& nums, vector<bool>& checked, vector<vector<int>>& ans);
 public:

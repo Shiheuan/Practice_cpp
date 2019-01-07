@@ -139,7 +139,7 @@ int main(int argc, _TCHAR* argv[]) {
 	cout << l.getPermutation(4, 9) << endl;
 	/**/
 
-	/**/
+	/*
 	int a[] = { 1, 2, 3 };
 	vector<int> nums(a, a + 3);
 	vector<vector<int>> p = l.permute(nums);
@@ -151,6 +151,11 @@ int main(int argc, _TCHAR* argv[]) {
 	}
 	/**/
 
+	/**/
+	string a = "PAYPALISHIRING";
+	string o = l.convert(a, 3);
+	cout << o << endl;
+	/**/
 	return RUN_ALL_TESTS();
 	//system("PAUSE");
 	// 将 [链接器] - [系统] - [子系统] 修改为 “控制台”，使用 Ctrl + F5 进行调试即可。
