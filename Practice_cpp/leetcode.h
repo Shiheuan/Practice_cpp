@@ -133,6 +133,11 @@ public:
 	 * and then read line by line.
 	 */
 	string convert(string s, int numRows);
+	/* #8 
+	 * String to Integer (atoi)
+	 * " " (+\-) [0123456789] other
+	 */
+	int myAtoi(string str);
 private:
 	void PermuteDfs(vector<int>& line, vector<int>& nums, vector<bool>& checked, vector<vector<int>>& ans);
 public:

@@ -304,7 +304,7 @@ string leetcode::convert(string s, int numRows) {
 	int size = 2 * numRows - 2;
 	for (int i = 0; i < numRows; i++)
 	{
-		for (int j = i; j < s.length(); j+=size) {
+		for (int j = i; j < s.length(); j += size) {
 			result += s[j];
 			if (i != 0 && i != numRows - 1 && (j - i) + (size - i) < s.length()) {
 				result += s[(j - i) + (size - i)];
@@ -313,3 +313,86 @@ string leetcode::convert(string s, int numRows) {
 	}
 	return result;
 }
+int leetcode::myAtoi(string str) {
+	//if (str.length() == 0) return 0;
+	int i = 0;
+	int a = 1;
+	bool isOver = false;
+	while (str[i] == ' ') {
+		i++;
+	}
+	if (str.length() == i) return 0;
+	string noblankstr = str.substr(i, str.length() - i);
+	string onlynum = noblankstr;
+	if (noblankstr[0] == '-') {
+		onlynum = noblankstr.substr(1, noblankstr.length() - 1);
+		a = -1 * a;
+	}
+	if (noblankstr[0] == '+'){
+		onlynum = noblankstr.substr(1, noblankstr.length() - 1);
+	}
+	cout << noblankstr << endl;
+	cout << onlynum << endl;
+	int64_t ans = 0;
+	for (int j = 0; j < onlynum.length(); j++) {
+		int num = 0;
+		switch (onlynum[j]) {
+		case '0':
+			num = 0;
+			break;
+		case '1':
+			num = 1;
+			break;
+		case '2':
+			num = 2;
+			break;
+		case '3':
+			num = 3;
+			break;
+		case '4':
+			num = 4;
+			break;
+		case '5':
+			num = 5;
+			break;
+		case '6':
+			num = 6;
+			break;
+		case '7':
+			num = 7;
+			break;
+		case '8':
+			num = 8;
+			break;
+		case '9':
+			num = 9;
+			break;
+		default:
+			isOver = true;
+			break;
+		}
+		if (isOver)
+			break;
+		ans *= 10;
+		ans += num;
+		if (ans > INT32_MAX) {
+			return (a > 0) ? INT32_MAX : INT32_MIN;
+		}
+	}
+	return ans*a;
+}
+/*int myAtoi2(string str) {
+	if (str.empty()) return 0;
+	int sign = 1, base = 0, i = 0, n = str.size();
+	while (i < n && str[i] == ' ') ++i;
+	if (str[i] == '+' || str[i] == '-') {
+		sign = (str[i++] == '+') ? 1 : -1;
+	}
+	while (i < n && str[i] >= '0' && str[i] <= '9') {
+		if (base > INT_MAX / 10 || (base == INT_MAX / 10 && str[i] - '0' > 7)) {
+			return (sign == 1) ? INT_MAX : INT_MIN;
+		}
+		base = 10 * base + (str[i++] - '0');
+	}
+	return base * sign;
+}*/

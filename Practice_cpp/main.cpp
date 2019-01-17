@@ -151,12 +151,21 @@ int main(int argc, _TCHAR* argv[]) {
 	}
 	/**/
 
-	/**/
+	/*
 	string a = "PAYPALISHIRING";
 	string o = l.convert(a, 3);
 	cout << o << endl;
 	/**/
-	return RUN_ALL_TESTS();
+	
+	//cout << l.myAtoi("   sdfasdf") << endl;
+
+	cout << ""[0] << endl;
+	cout << l.myAtoi("-123413ffffffff") << endl;
+	cout << l.myAtoi("f-1213413423423423423") << endl;
+	cout << l.myAtoi(" +-2") << endl;
+	cout << l.myAtoi("  -91283472332") << endl;
+	cout << l.myAtoi("-6147483648") << endl;
+	// return RUN_ALL_TESTS();
 	//system("PAUSE");
 	// 将 [链接器] - [系统] - [子系统] 修改为 “控制台”，使用 Ctrl + F5 进行调试即可。
 	// return 0;
